@@ -1,0 +1,42 @@
+$left-right-margin: 88px;
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--scl-shadow-level-2);
+  margin: 0px $left-right-margin;
+}
+
+.content {
+  padding: 30px;
+}
+
+scale-telekom-header::part(container) {
+  margin: 0px $left-right-margin;
+}
+
+main {
+  height: calc(100vh - 200px);
+  width: 100%;
+  overflow-x: auto;
+}
+
+scale-tag::part(base) {
+  background: var(--telekom-color-text-and-icon-black-standard);
+  color: var(--telekom-color-text-and-icon-white-standard);
+}
+
+.form-control {
+  margin: 30px 15px;
+}
+
+.no-record-found {
+  color: var(--telekom-color-text-and-icon-functional-danger);
+}
