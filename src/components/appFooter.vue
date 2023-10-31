@@ -3,21 +3,16 @@
     <div class="app-footer__container">
       <span>© T Systems International</span>
       <span>Impressum</span>
-  </div>
+    </div>
   </footer>
 </template>
 
 <style scoped lang="scss">
-
 .app-footer {
-  margin-left: 88px;
-    margin-right: 88px;
-    position: fixed;
-    left: 0;
-    right: 0;
-    height: 80px;
+  margin: 0px $left-right-margin;
+  height: 80px;
 
-  &__container{
+  &__container {
     display: flex;
     justify-content: space-between;
     height: 100%;

@@ -1,4 +1,7 @@
-export const professionData = [
+import type { ProfessionList } from '../components/contextModule/type'
+
+
+export const professionData:ProfessionList[] = [
     {
         id: 1,
         profession: 'Teacher'

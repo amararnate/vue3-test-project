@@ -4,7 +4,8 @@ import ContextDataService from '../../services/ContexDataService'
 import type {
   ProfessionList,
   CustomElement,
-  ContextData
+  ContextData,
+  ElementTarget,
 } from '../../components/contextModule/type'
 
 const emit = defineEmits(['refreshList'])
@@ -51,7 +52,7 @@ const closeModal = () => {
   modal.opened = false
 }
 
-const professionDropdownChange = (e: { target: { value: any } }) => {
+const professionDropdownChange = (e: ElementTarget) => {
   profession.value = e.target.value
   validateProfession()
 }

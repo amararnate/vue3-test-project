@@ -1,33 +1,33 @@
 <script lang="ts" setup>
-import { reactive } from 'vue'
-import type { DeleteContexRecord, ContextData } from './type'
+import { reactive } from "vue";
+import type { DeleteContexRecord, ContextData, ElementTarget } from "./type";
 
 defineProps<{
-  tableData: ContextData[]
-}>()
+  tableData: ContextData[];
+}>();
 
-const emit = defineEmits(['enableDeleteRecord'])
-const ContexRecordIds: DeleteContexRecord[] = reactive([])
+const emit = defineEmits(["enableDeleteRecord"]);
+const ContexRecordIds: DeleteContexRecord[] = reactive([]);
 
-const selectContextRecord = (e: { target: { value: any; checked: any } }) => {
-  const contextId: number = e.target.value
+const selectContextRecord = (e: ElementTarget) => {
+  const contextId: number = e.target.value;
   if (e.target.checked) {
     ContexRecordIds.push({
-      id: contextId
-    })
+      id: contextId,
+    });
   } else {
-    const index = ContexRecordIds.findIndex((item) => item.id === contextId)
+    const index = ContexRecordIds.findIndex((item) => item.id === contextId);
     if (index !== -1) {
-      ContexRecordIds.splice(index, 1)
+      ContexRecordIds.splice(index, 1);
     }
   }
 
-  const makeDeleteButtonDisabled = ContexRecordIds.length === 0
-  emit('enableDeleteRecord', {
+  const makeDeleteButtonDisabled = ContexRecordIds.length === 0;
+  emit("enableDeleteRecord", {
     showDelete: makeDeleteButtonDisabled,
-    deleteContexRecordData: ContexRecordIds
-  })
-}
+    deleteContexRecordData: ContexRecordIds,
+  });
+};
 </script>
 <template>
   <div class="context-table">
@@ -49,12 +49,17 @@ const selectContextRecord = (e: { target: { value: any; checked: any } }) => {
 
           <tr v-for="table in tableData" v-bind:key="table.id">
             <td>
-              <scale-checkbox :value="table.id" @scaleChange="selectContextRecord" />
+              <scale-checkbox
+                :value="table.id"
+                @scaleChange="selectContextRecord"
+              />
             </td>
             <td>{{ table.firstName }}</td>
             <td>{{ table.lastName }}</td>
             <td>
-              <scale-tag color="black" size="large">{{ table.professionName }} </scale-tag>
+              <scale-tag color="black" size="large"
+                >{{ table.professionName }}
+              </scale-tag>
             </td>
             <td>{{ table.description }}</td>
           </tr>
